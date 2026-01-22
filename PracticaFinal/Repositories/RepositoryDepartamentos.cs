@@ -56,17 +56,63 @@ namespace PracticaFinal.Repositories
             while (await reader.ReadAsync())
             {
 
-             
-                    model.IdDepartamento = int.Parse(reader["DEPT_NO"].ToString());
-                    model.Nombre = reader["DNOMBRE"].ToString();
-                    model.Localidad = reader["LOC"].ToString();              
-                    model.Apellidos.Add(reader["APELLIDO"].ToString());
+
+                model.IdDepartamento = int.Parse(reader["DEPT_NO"].ToString());
+                model.Nombre = reader["DNOMBRE"].ToString();
+                model.Localidad = reader["LOC"].ToString();
+                model.Apellidos.Add(reader["APELLIDO"].ToString());
             }
             await this.reader.CloseAsync();
             await this.cn.CloseAsync();
             this.com.Parameters.Clear();
             return model;
         }
+        //public async Task<Departamentos> GetEmpleadosDepartamentoAsync(string nombredepartamento)
+        //{
+        //    // 1️⃣ Obtener datos del departamento
+        //    string sqlDept = "SP_GET_DEPARTAMENTO";
+        //    this.com.CommandType = CommandType.StoredProcedure;
+        //    this.com.CommandText = sqlDept;
+        //    this.com.Parameters.AddWithValue("@nombre", nombredepartamento);
+
+        //    await this.cn.OpenAsync();
+        //    this.reader = await this.com.ExecuteReaderAsync();
+
+        //    Departamentos model = new Departamentos
+        //    {
+        //        Apellidos = new List<string>()
+        //    };
+
+        //    if (await reader.ReadAsync())
+        //    {
+        //        model.IdDepartamento = int.Parse(reader["DEPT_NO"].ToString());
+        //        model.Nombre = reader["DNOMBRE"].ToString();
+        //        model.Localidad = reader["LOC"].ToString();
+        //    }
+
+        //    await this.reader.CloseAsync();
+        //    this.com.Parameters.Clear();
+
+        //    // 2️⃣ Obtener empleados del departamento
+        //    string sqlEmp = "SP_GET_EMPLEADOS_DEPARTAMENTO";
+        //    this.com.CommandType = CommandType.StoredProcedure;
+        //    this.com.CommandText = sqlEmp;
+        //    this.com.Parameters.AddWithValue("@idDepartamento", model.IdDepartamento);
+
+        //    this.reader = await this.com.ExecuteReaderAsync();
+
+        //    while (await reader.ReadAsync())
+        //    {
+        //        model.Apellidos.Add(reader["APELLIDO"].ToString());
+        //    }
+
+        //    await this.reader.CloseAsync();
+        //    await this.cn.CloseAsync();
+        //    this.com.Parameters.Clear();
+
+        //    return model;
+        //}
+
         public async Task<int> CreateDepartamentoAsync(int id,string nombredepartamento,string localidad)
         {
             string sql = "SP_INSERT_DEPT";
