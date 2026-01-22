@@ -1,16 +1,88 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
 using NetAppAdoNet.Helpers;
 using NetAppAdoNet.Models;
 using PracticaFinal.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PracticaFinal.Repositories
 {
-    
+    #region procedures
+    //    CREATE PROCEDURE SP_ALL_DEPARTAMENTOS
+    //AS
+    //BEGIN
+    //    SET NOCOUNT ON;
+    //    SELECT DNOMBRE
+    //    FROM DEPT;
+    //    END
+    //    CREATE PROCEDURE SP_GET_DEPARTAMENTO
+    //        @nombre NVARCHAR(50)
+    //AS
+    //BEGIN
+    //    SET NOCOUNT ON;
+
+    //    SELECT DEPT_NO, DNOMBRE, LOC
+    //    FROM DEPT
+    //    WHERE DNOMBRE = @nombre;
+    //    END
+//    CREATE PROCEDURE SP_GET_EMPLEADOS_DEPARTAMENTO
+//        @idDepartamento INT
+//    AS
+//BEGIN
+//    SET NOCOUNT ON;
+
+//    SELECT APELLIDO
+//    FROM EMP
+//    WHERE DEPT_NO = @idDepartamento;
+//    END
+
+//CREATE PROCEDURE SP_INSERT_DEPT
+//    @id INT,
+//    @nombre NVARCHAR(50),
+//    @localidad NVARCHAR(50)
+//AS
+//BEGIN
+//    SET NOCOUNT ON;
+
+//    INSERT INTO DEPT(DEPT_NO, DNOMBRE, LOC)
+//    VALUES(@id, @nombre, @localidad);
+//    END
+
+//CREATE PROCEDURE SP_UPDATE_EMP
+//    @apellido NVARCHAR(50),
+//    @oficio NVARCHAR(50),
+//    @salario INT
+//AS
+//BEGIN
+//    SET NOCOUNT ON;
+
+//    UPDATE EMP
+//    SET OFICIO = @oficio,
+//        SALARIO = @salario
+//    WHERE APELLIDO = @apellido;
+//    END
+
+//CREATE PROCEDURE SP_DATOS_EMPLEADOS
+//    @apellido NVARCHAR(50)
+//AS
+//BEGIN
+//    SET NOCOUNT ON;
+
+//    SELECT APELLIDO, OFICIO, SALARIO
+//    FROM EMP
+//    WHERE APELLIDO = @apellido;
+//    END
+
+
+    #endregion
     public class RepositoryDepartamentos
     {
         SqlConnection cn;
